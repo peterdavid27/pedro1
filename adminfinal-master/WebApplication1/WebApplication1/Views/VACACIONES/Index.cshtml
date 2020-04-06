@@ -1,0 +1,57 @@
+﻿@model IEnumerable<WebApplication1.Models.VACACIONES>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.DESDE)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.HASTA)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.AÑO_CORRESPONDIENTE)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.COMENTARIO)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.EMPLEADOS.USERNAME)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.DESDE)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.HASTA)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.AÑO_CORRESPONDIENTE)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.COMENTARIO)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.EMPLEADOS.USERNAME)
+        </td>
+        <td>
+            @Html.ActionLink("Editar", "Edit", new { id = item.ID }, new { @class = "btn btn-warning" }) |
+            @Html.ActionLink("Detalles", "Details", new { id = item.ID }, new { @class = "btn btn-info" }) |
+            @Html.ActionLink("Eliminar", "Delete", new { id = item.ID }, new { @class = "btn btn-danger" })
+        </td>
+    </tr>
+}
+
+</table>

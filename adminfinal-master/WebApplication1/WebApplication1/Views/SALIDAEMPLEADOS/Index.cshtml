@@ -1,0 +1,50 @@
+﻿@model IEnumerable<WebApplication1.Models.SALIDAEMPLEADOS>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.MOTIVO)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TIPO_SALIDA)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FECHA_SALIDA)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.EMPLEADOS.USERNAME)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.MOTIVO)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TIPO_SALIDA)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.FECHA_SALIDA)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.EMPLEADOS.USERNAME)
+        </td>
+        <td>
+            @Html.ActionLink("Editar", "Edit", new { id = item.ID }, new { @class = "btn btn-warning" }) |
+            @Html.ActionLink("Detalles", "Details", new { id = item.ID }, new { @class = "btn btn-info" }) |
+            
+</tr>
+}
+
+</table>

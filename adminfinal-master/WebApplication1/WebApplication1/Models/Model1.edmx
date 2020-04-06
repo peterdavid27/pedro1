@@ -1,0 +1,592 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="COURRIERModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="ADMINISTRADOR">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="USERNAME" Type="varchar" MaxLength="25" Nullable="false" />
+          <Property Name="CLAVE" Type="varchar" MaxLength="30" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CLIENTES">
+          <Key>
+            <PropertyRef Name="ID_CLIENTE" />
+          </Key>
+          <Property Name="ID_CLIENTE" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NOMBRES" Type="varchar" MaxLength="25" Nullable="false" />
+          <Property Name="APELLIDOS" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="CEDULA" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="GENERO" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="TELEFONO" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="SUCURSAL" Type="int" />
+          <Property Name="CORREO" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="USUARIO" Type="varchar" MaxLength="25" Nullable="false" />
+          <Property Name="CLAVE" Type="varchar" MaxLength="30" Nullable="false" />
+        </EntityType>
+        <EntityType Name="EMPLEADOS">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CODIGO" Type="int" Nullable="false" />
+          <Property Name="USERNAME" Type="varchar" MaxLength="25" Nullable="false" />
+          <Property Name="CLAVE" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="NOMBRE" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="APELLIDO" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="TELEFONO" Type="varchar" MaxLength="15" Nullable="false" />
+          <Property Name="DEPARTAMENTO" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="CARGO" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="FECHA_INGRESO" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="SALARIO" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="ESTATUS" Type="varchar" MaxLength="15" Nullable="false" />
+        </EntityType>
+        <EntityType Name="LICENCIAS">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="EMPLEADO" Type="int" />
+          <Property Name="DESDE" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="HASTA" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="COMENTARIO" Type="varchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <EntityType Name="NOMINA">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="AÑO" Type="varchar" MaxLength="4" Nullable="false" />
+          <Property Name="MES" Type="varchar" MaxLength="9" Nullable="false" />
+          <Property Name="MONTO_TOTAL" Type="varchar" MaxLength="12" Nullable="false" />
+        </EntityType>
+        <EntityType Name="RECEPCION">
+          <Key>
+            <PropertyRef Name="ID_PRODUCTO" />
+          </Key>
+          <Property Name="ID_PRODUCTO" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CLIENTE" Type="int" />
+          <Property Name="PRODUCTO" Type="varchar" MaxLength="80" Nullable="false" />
+          <Property Name="ESTADO" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="FECHA_REGISTRO" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="ORIGEN" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="DESTINO" Type="int" />
+          <Property Name="PESO" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="PRECIO" Type="varchar" MaxLength="10" Nullable="false" />
+        </EntityType>
+        <EntityType Name="SALIDAEMPLEADOS">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="EMPLEADO" Type="int" />
+          <Property Name="MOTIVO" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="TIPO_SALIDA" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="FECHA_SALIDA" Type="varchar" MaxLength="20" Nullable="false" />
+        </EntityType>
+        <EntityType Name="SUCURSAL">
+          <Key>
+            <PropertyRef Name="ID_SUCURSAL" />
+          </Key>
+          <Property Name="ID_SUCURSAL" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NOMBRE" Type="varchar" MaxLength="25" Nullable="false" />
+          <Property Name="DIRECCION" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="TELEFONO" Type="varchar" MaxLength="12" Nullable="false" />
+          <Property Name="CORREO" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="HORARIO" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="VACACIONES">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="EMPLEADO" Type="int" />
+          <Property Name="DESDE" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="HASTA" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="AÑO_CORRESPONDIENTE" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="COMENTARIO" Type="varchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <Association Name="FK__CLIENTES__SUCURS__534D60F1">
+          <End Role="SUCURSAL" Type="Self.SUCURSAL" Multiplicity="0..1" />
+          <End Role="CLIENTES" Type="Self.CLIENTES" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SUCURSAL">
+              <PropertyRef Name="ID_SUCURSAL" />
+            </Principal>
+            <Dependent Role="CLIENTES">
+              <PropertyRef Name="SUCURSAL" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__LICENCIAS__EMPLE__48CFD27E">
+          <End Role="EMPLEADOS" Type="Self.EMPLEADOS" Multiplicity="0..1" />
+          <End Role="LICENCIAS" Type="Self.LICENCIAS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EMPLEADOS">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="LICENCIAS">
+              <PropertyRef Name="EMPLEADO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__RECEPCION__CLIEN__59063A47">
+          <End Role="CLIENTES" Type="Self.CLIENTES" Multiplicity="0..1" />
+          <End Role="RECEPCION" Type="Self.RECEPCION" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CLIENTES">
+              <PropertyRef Name="ID_CLIENTE" />
+            </Principal>
+            <Dependent Role="RECEPCION">
+              <PropertyRef Name="CLIENTE" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__RECEPCION__DESTI__59FA5E80">
+          <End Role="SUCURSAL" Type="Self.SUCURSAL" Multiplicity="0..1" />
+          <End Role="RECEPCION" Type="Self.RECEPCION" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SUCURSAL">
+              <PropertyRef Name="ID_SUCURSAL" />
+            </Principal>
+            <Dependent Role="RECEPCION">
+              <PropertyRef Name="DESTINO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__SALIDAEMP__EMPLE__45F365D3">
+          <End Role="EMPLEADOS" Type="Self.EMPLEADOS" Multiplicity="0..1" />
+          <End Role="SALIDAEMPLEADOS" Type="Self.SALIDAEMPLEADOS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EMPLEADOS">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="SALIDAEMPLEADOS">
+              <PropertyRef Name="EMPLEADO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__VACACIONE__EMPLE__4BAC3F29">
+          <End Role="EMPLEADOS" Type="Self.EMPLEADOS" Multiplicity="0..1" />
+          <End Role="VACACIONES" Type="Self.VACACIONES" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EMPLEADOS">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="VACACIONES">
+              <PropertyRef Name="EMPLEADO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="COURRIERModelStoreContainer">
+          <EntitySet Name="ADMINISTRADOR" EntityType="Self.ADMINISTRADOR" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CLIENTES" EntityType="Self.CLIENTES" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="EMPLEADOS" EntityType="Self.EMPLEADOS" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="LICENCIAS" EntityType="Self.LICENCIAS" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="NOMINA" EntityType="Self.NOMINA" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="RECEPCION" EntityType="Self.RECEPCION" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SALIDAEMPLEADOS" EntityType="Self.SALIDAEMPLEADOS" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SUCURSAL" EntityType="Self.SUCURSAL" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="VACACIONES" EntityType="Self.VACACIONES" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__CLIENTES__SUCURS__534D60F1" Association="Self.FK__CLIENTES__SUCURS__534D60F1">
+            <End Role="SUCURSAL" EntitySet="SUCURSAL" />
+            <End Role="CLIENTES" EntitySet="CLIENTES" />
+          </AssociationSet>
+          <AssociationSet Name="FK__LICENCIAS__EMPLE__48CFD27E" Association="Self.FK__LICENCIAS__EMPLE__48CFD27E">
+            <End Role="EMPLEADOS" EntitySet="EMPLEADOS" />
+            <End Role="LICENCIAS" EntitySet="LICENCIAS" />
+          </AssociationSet>
+          <AssociationSet Name="FK__RECEPCION__CLIEN__59063A47" Association="Self.FK__RECEPCION__CLIEN__59063A47">
+            <End Role="CLIENTES" EntitySet="CLIENTES" />
+            <End Role="RECEPCION" EntitySet="RECEPCION" />
+          </AssociationSet>
+          <AssociationSet Name="FK__RECEPCION__DESTI__59FA5E80" Association="Self.FK__RECEPCION__DESTI__59FA5E80">
+            <End Role="SUCURSAL" EntitySet="SUCURSAL" />
+            <End Role="RECEPCION" EntitySet="RECEPCION" />
+          </AssociationSet>
+          <AssociationSet Name="FK__SALIDAEMP__EMPLE__45F365D3" Association="Self.FK__SALIDAEMP__EMPLE__45F365D3">
+            <End Role="EMPLEADOS" EntitySet="EMPLEADOS" />
+            <End Role="SALIDAEMPLEADOS" EntitySet="SALIDAEMPLEADOS" />
+          </AssociationSet>
+          <AssociationSet Name="FK__VACACIONE__EMPLE__4BAC3F29" Association="Self.FK__VACACIONE__EMPLE__4BAC3F29">
+            <End Role="EMPLEADOS" EntitySet="EMPLEADOS" />
+            <End Role="VACACIONES" EntitySet="VACACIONES" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="COURRIERModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="ADMINISTRADOR">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="USERNAME" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CLAVE" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CLIENTES">
+          <Key>
+            <PropertyRef Name="ID_CLIENTE" />
+          </Key>
+          <Property Name="ID_CLIENTE" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NOMBRES" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="APELLIDOS" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CEDULA" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="GENERO" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="TELEFONO" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="SUCURSAL" Type="Int32" />
+          <Property Name="CORREO" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="USUARIO" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CLAVE" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="SUCURSAL1" Relationship="Self.FK__CLIENTES__SUCURS__534D60F1" FromRole="CLIENTES" ToRole="SUCURSAL" />
+          <NavigationProperty Name="RECEPCION" Relationship="Self.FK__RECEPCION__CLIEN__59063A47" FromRole="CLIENTES" ToRole="RECEPCION" />
+        </EntityType>
+        <EntityType Name="EMPLEADOS">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CODIGO" Type="Int32" Nullable="false" />
+          <Property Name="USERNAME" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CLAVE" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="NOMBRE" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="APELLIDO" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="TELEFONO" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="DEPARTAMENTO" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CARGO" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="FECHA_INGRESO" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="SALARIO" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="ESTATUS" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="LICENCIAS" Relationship="Self.FK__LICENCIAS__EMPLE__48CFD27E" FromRole="EMPLEADOS" ToRole="LICENCIAS" />
+          <NavigationProperty Name="SALIDAEMPLEADOS" Relationship="Self.FK__SALIDAEMP__EMPLE__45F365D3" FromRole="EMPLEADOS" ToRole="SALIDAEMPLEADOS" />
+          <NavigationProperty Name="VACACIONES" Relationship="Self.FK__VACACIONE__EMPLE__4BAC3F29" FromRole="EMPLEADOS" ToRole="VACACIONES" />
+        </EntityType>
+        <EntityType Name="LICENCIAS">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="EMPLEADO" Type="Int32" />
+          <Property Name="DESDE" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="HASTA" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="COMENTARIO" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="EMPLEADOS" Relationship="Self.FK__LICENCIAS__EMPLE__48CFD27E" FromRole="LICENCIAS" ToRole="EMPLEADOS" />
+        </EntityType>
+        <EntityType Name="NOMINA">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="AÑO" Type="String" MaxLength="4" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="MES" Type="String" MaxLength="9" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="MONTO_TOTAL" Type="String" MaxLength="12" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="RECEPCION">
+          <Key>
+            <PropertyRef Name="ID_PRODUCTO" />
+          </Key>
+          <Property Name="ID_PRODUCTO" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CLIENTE" Type="Int32" />
+          <Property Name="PRODUCTO" Type="String" MaxLength="80" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ESTADO" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="FECHA_REGISTRO" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ORIGEN" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="DESTINO" Type="Int32" />
+          <Property Name="PESO" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="PRECIO" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="CLIENTES" Relationship="Self.FK__RECEPCION__CLIEN__59063A47" FromRole="RECEPCION" ToRole="CLIENTES" />
+          <NavigationProperty Name="SUCURSAL" Relationship="Self.FK__RECEPCION__DESTI__59FA5E80" FromRole="RECEPCION" ToRole="SUCURSAL" />
+        </EntityType>
+        <EntityType Name="SALIDAEMPLEADOS">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="EMPLEADO" Type="Int32" />
+          <Property Name="MOTIVO" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="TIPO_SALIDA" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="FECHA_SALIDA" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="EMPLEADOS" Relationship="Self.FK__SALIDAEMP__EMPLE__45F365D3" FromRole="SALIDAEMPLEADOS" ToRole="EMPLEADOS" />
+        </EntityType>
+        <EntityType Name="SUCURSAL">
+          <Key>
+            <PropertyRef Name="ID_SUCURSAL" />
+          </Key>
+          <Property Name="ID_SUCURSAL" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NOMBRE" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="DIRECCION" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="TELEFONO" Type="String" MaxLength="12" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CORREO" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="HORARIO" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="CLIENTES" Relationship="Self.FK__CLIENTES__SUCURS__534D60F1" FromRole="SUCURSAL" ToRole="CLIENTES" />
+          <NavigationProperty Name="RECEPCION" Relationship="Self.FK__RECEPCION__DESTI__59FA5E80" FromRole="SUCURSAL" ToRole="RECEPCION" />
+        </EntityType>
+        <EntityType Name="VACACIONES">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="EMPLEADO" Type="Int32" />
+          <Property Name="DESDE" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="HASTA" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="AÑO_CORRESPONDIENTE" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="COMENTARIO" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="EMPLEADOS" Relationship="Self.FK__VACACIONE__EMPLE__4BAC3F29" FromRole="VACACIONES" ToRole="EMPLEADOS" />
+        </EntityType>
+        <Association Name="FK__CLIENTES__SUCURS__534D60F1">
+          <End Role="SUCURSAL" Type="Self.SUCURSAL" Multiplicity="0..1" />
+          <End Role="CLIENTES" Type="Self.CLIENTES" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SUCURSAL">
+              <PropertyRef Name="ID_SUCURSAL" />
+            </Principal>
+            <Dependent Role="CLIENTES">
+              <PropertyRef Name="SUCURSAL" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__RECEPCION__CLIEN__59063A47">
+          <End Role="CLIENTES" Type="Self.CLIENTES" Multiplicity="0..1" />
+          <End Role="RECEPCION" Type="Self.RECEPCION" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CLIENTES">
+              <PropertyRef Name="ID_CLIENTE" />
+            </Principal>
+            <Dependent Role="RECEPCION">
+              <PropertyRef Name="CLIENTE" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__LICENCIAS__EMPLE__48CFD27E">
+          <End Role="EMPLEADOS" Type="Self.EMPLEADOS" Multiplicity="0..1" />
+          <End Role="LICENCIAS" Type="Self.LICENCIAS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EMPLEADOS">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="LICENCIAS">
+              <PropertyRef Name="EMPLEADO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__SALIDAEMP__EMPLE__45F365D3">
+          <End Role="EMPLEADOS" Type="Self.EMPLEADOS" Multiplicity="0..1" />
+          <End Role="SALIDAEMPLEADOS" Type="Self.SALIDAEMPLEADOS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EMPLEADOS">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="SALIDAEMPLEADOS">
+              <PropertyRef Name="EMPLEADO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__VACACIONE__EMPLE__4BAC3F29">
+          <End Role="EMPLEADOS" Type="Self.EMPLEADOS" Multiplicity="0..1" />
+          <End Role="VACACIONES" Type="Self.VACACIONES" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EMPLEADOS">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="VACACIONES">
+              <PropertyRef Name="EMPLEADO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__RECEPCION__DESTI__59FA5E80">
+          <End Role="SUCURSAL" Type="Self.SUCURSAL" Multiplicity="0..1" />
+          <End Role="RECEPCION" Type="Self.RECEPCION" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SUCURSAL">
+              <PropertyRef Name="ID_SUCURSAL" />
+            </Principal>
+            <Dependent Role="RECEPCION">
+              <PropertyRef Name="DESTINO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="COURRIEREntities8" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="ADMINISTRADOR" EntityType="Self.ADMINISTRADOR" />
+          <EntitySet Name="CLIENTES" EntityType="Self.CLIENTES" />
+          <EntitySet Name="EMPLEADOS" EntityType="Self.EMPLEADOS" />
+          <EntitySet Name="LICENCIAS" EntityType="Self.LICENCIAS" />
+          <EntitySet Name="NOMINA" EntityType="Self.NOMINA" />
+          <EntitySet Name="RECEPCION" EntityType="Self.RECEPCION" />
+          <EntitySet Name="SALIDAEMPLEADOS" EntityType="Self.SALIDAEMPLEADOS" />
+          <EntitySet Name="SUCURSAL" EntityType="Self.SUCURSAL" />
+          <EntitySet Name="VACACIONES" EntityType="Self.VACACIONES" />
+          <AssociationSet Name="FK__CLIENTES__SUCURS__534D60F1" Association="Self.FK__CLIENTES__SUCURS__534D60F1">
+            <End Role="SUCURSAL" EntitySet="SUCURSAL" />
+            <End Role="CLIENTES" EntitySet="CLIENTES" />
+          </AssociationSet>
+          <AssociationSet Name="FK__RECEPCION__CLIEN__59063A47" Association="Self.FK__RECEPCION__CLIEN__59063A47">
+            <End Role="CLIENTES" EntitySet="CLIENTES" />
+            <End Role="RECEPCION" EntitySet="RECEPCION" />
+          </AssociationSet>
+          <AssociationSet Name="FK__LICENCIAS__EMPLE__48CFD27E" Association="Self.FK__LICENCIAS__EMPLE__48CFD27E">
+            <End Role="EMPLEADOS" EntitySet="EMPLEADOS" />
+            <End Role="LICENCIAS" EntitySet="LICENCIAS" />
+          </AssociationSet>
+          <AssociationSet Name="FK__SALIDAEMP__EMPLE__45F365D3" Association="Self.FK__SALIDAEMP__EMPLE__45F365D3">
+            <End Role="EMPLEADOS" EntitySet="EMPLEADOS" />
+            <End Role="SALIDAEMPLEADOS" EntitySet="SALIDAEMPLEADOS" />
+          </AssociationSet>
+          <AssociationSet Name="FK__VACACIONE__EMPLE__4BAC3F29" Association="Self.FK__VACACIONE__EMPLE__4BAC3F29">
+            <End Role="EMPLEADOS" EntitySet="EMPLEADOS" />
+            <End Role="VACACIONES" EntitySet="VACACIONES" />
+          </AssociationSet>
+          <AssociationSet Name="FK__RECEPCION__DESTI__59FA5E80" Association="Self.FK__RECEPCION__DESTI__59FA5E80">
+            <End Role="SUCURSAL" EntitySet="SUCURSAL" />
+            <End Role="RECEPCION" EntitySet="RECEPCION" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="COURRIERModelStoreContainer" CdmEntityContainer="COURRIEREntities8">
+          <EntitySetMapping Name="ADMINISTRADOR">
+            <EntityTypeMapping TypeName="COURRIERModel.ADMINISTRADOR">
+              <MappingFragment StoreEntitySet="ADMINISTRADOR">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="USERNAME" ColumnName="USERNAME" />
+                <ScalarProperty Name="CLAVE" ColumnName="CLAVE" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CLIENTES">
+            <EntityTypeMapping TypeName="COURRIERModel.CLIENTES">
+              <MappingFragment StoreEntitySet="CLIENTES">
+                <ScalarProperty Name="ID_CLIENTE" ColumnName="ID_CLIENTE" />
+                <ScalarProperty Name="NOMBRES" ColumnName="NOMBRES" />
+                <ScalarProperty Name="APELLIDOS" ColumnName="APELLIDOS" />
+                <ScalarProperty Name="CEDULA" ColumnName="CEDULA" />
+                <ScalarProperty Name="GENERO" ColumnName="GENERO" />
+                <ScalarProperty Name="TELEFONO" ColumnName="TELEFONO" />
+                <ScalarProperty Name="SUCURSAL" ColumnName="SUCURSAL" />
+                <ScalarProperty Name="CORREO" ColumnName="CORREO" />
+                <ScalarProperty Name="USUARIO" ColumnName="USUARIO" />
+                <ScalarProperty Name="CLAVE" ColumnName="CLAVE" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="EMPLEADOS">
+            <EntityTypeMapping TypeName="COURRIERModel.EMPLEADOS">
+              <MappingFragment StoreEntitySet="EMPLEADOS">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="CODIGO" ColumnName="CODIGO" />
+                <ScalarProperty Name="USERNAME" ColumnName="USERNAME" />
+                <ScalarProperty Name="CLAVE" ColumnName="CLAVE" />
+                <ScalarProperty Name="NOMBRE" ColumnName="NOMBRE" />
+                <ScalarProperty Name="APELLIDO" ColumnName="APELLIDO" />
+                <ScalarProperty Name="TELEFONO" ColumnName="TELEFONO" />
+                <ScalarProperty Name="DEPARTAMENTO" ColumnName="DEPARTAMENTO" />
+                <ScalarProperty Name="CARGO" ColumnName="CARGO" />
+                <ScalarProperty Name="FECHA_INGRESO" ColumnName="FECHA_INGRESO" />
+                <ScalarProperty Name="SALARIO" ColumnName="SALARIO" />
+                <ScalarProperty Name="ESTATUS" ColumnName="ESTATUS" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="LICENCIAS">
+            <EntityTypeMapping TypeName="COURRIERModel.LICENCIAS">
+              <MappingFragment StoreEntitySet="LICENCIAS">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="EMPLEADO" ColumnName="EMPLEADO" />
+                <ScalarProperty Name="DESDE" ColumnName="DESDE" />
+                <ScalarProperty Name="HASTA" ColumnName="HASTA" />
+                <ScalarProperty Name="COMENTARIO" ColumnName="COMENTARIO" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="NOMINA">
+            <EntityTypeMapping TypeName="COURRIERModel.NOMINA">
+              <MappingFragment StoreEntitySet="NOMINA">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="AÑO" ColumnName="AÑO" />
+                <ScalarProperty Name="MES" ColumnName="MES" />
+                <ScalarProperty Name="MONTO_TOTAL" ColumnName="MONTO_TOTAL" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RECEPCION">
+            <EntityTypeMapping TypeName="COURRIERModel.RECEPCION">
+              <MappingFragment StoreEntitySet="RECEPCION">
+                <ScalarProperty Name="ID_PRODUCTO" ColumnName="ID_PRODUCTO" />
+                <ScalarProperty Name="CLIENTE" ColumnName="CLIENTE" />
+                <ScalarProperty Name="PRODUCTO" ColumnName="PRODUCTO" />
+                <ScalarProperty Name="ESTADO" ColumnName="ESTADO" />
+                <ScalarProperty Name="FECHA_REGISTRO" ColumnName="FECHA_REGISTRO" />
+                <ScalarProperty Name="ORIGEN" ColumnName="ORIGEN" />
+                <ScalarProperty Name="DESTINO" ColumnName="DESTINO" />
+                <ScalarProperty Name="PESO" ColumnName="PESO" />
+                <ScalarProperty Name="PRECIO" ColumnName="PRECIO" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SALIDAEMPLEADOS">
+            <EntityTypeMapping TypeName="COURRIERModel.SALIDAEMPLEADOS">
+              <MappingFragment StoreEntitySet="SALIDAEMPLEADOS">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="EMPLEADO" ColumnName="EMPLEADO" />
+                <ScalarProperty Name="MOTIVO" ColumnName="MOTIVO" />
+                <ScalarProperty Name="TIPO_SALIDA" ColumnName="TIPO_SALIDA" />
+                <ScalarProperty Name="FECHA_SALIDA" ColumnName="FECHA_SALIDA" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SUCURSAL">
+            <EntityTypeMapping TypeName="COURRIERModel.SUCURSAL">
+              <MappingFragment StoreEntitySet="SUCURSAL">
+                <ScalarProperty Name="ID_SUCURSAL" ColumnName="ID_SUCURSAL" />
+                <ScalarProperty Name="NOMBRE" ColumnName="NOMBRE" />
+                <ScalarProperty Name="DIRECCION" ColumnName="DIRECCION" />
+                <ScalarProperty Name="TELEFONO" ColumnName="TELEFONO" />
+                <ScalarProperty Name="CORREO" ColumnName="CORREO" />
+                <ScalarProperty Name="HORARIO" ColumnName="HORARIO" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="VACACIONES">
+            <EntityTypeMapping TypeName="COURRIERModel.VACACIONES">
+              <MappingFragment StoreEntitySet="VACACIONES">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="EMPLEADO" ColumnName="EMPLEADO" />
+                <ScalarProperty Name="DESDE" ColumnName="DESDE" />
+                <ScalarProperty Name="HASTA" ColumnName="HASTA" />
+                <ScalarProperty Name="AÑO_CORRESPONDIENTE" ColumnName="AÑO_CORRESPONDIENTE" />
+                <ScalarProperty Name="COMENTARIO" ColumnName="COMENTARIO" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Ninguno" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

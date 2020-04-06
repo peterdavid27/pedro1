@@ -1,0 +1,90 @@
+﻿@model WebApplication1.Models.CLIENTES
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Detalles Cliente</h2>
+
+<div>
+    <h4>CLIENTES</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.NOMBRES)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NOMBRES)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.APELLIDOS)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.APELLIDOS)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CEDULA)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CEDULA)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.GENERO)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.GENERO)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TELEFONO)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TELEFONO)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CORREO)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CORREO)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.USUARIO)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.USUARIO)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CLAVE)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CLAVE)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SUCURSAL1.NOMBRE)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SUCURSAL1.NOMBRE)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Editar", "Edit", new { id = Model.ID_CLIENTE }, new { @class = "btn btn-warning" }) |
+    @Html.ActionLink("Inicio", "Index")
+</p>

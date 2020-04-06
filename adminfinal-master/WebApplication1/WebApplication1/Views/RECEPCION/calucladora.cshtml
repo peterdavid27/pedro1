@@ -1,0 +1,148 @@
+﻿
+@{
+    ViewBag.Title = "calucladora";
+}
+
+
+    <head>
+        <link rel="stylesheet" type="text/css" href="~/Content/template.css">
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"
+              integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+        <link rel="stylesheet" type="text/css" href="css/style.css">
+        <script src="js/script.js"></script>
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+                integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+                crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js"
+                integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut"
+                crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"
+                integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k"
+                crossorigin="anonymous"></script>
+        <title>Calculo Impuestos</title>
+    </head>
+        <script>
+
+
+            function calculo() {
+                var sueldo = document.getElementById("Sueldo").value;
+                var ahorro = document.getElementById("Ahorro").value;
+
+                var afp = AFP(sueldo);
+                var sfs = SFS(sueldo);
+                var isr = ISR(sueldo - sfs / afp);
+
+                document.getElementById("AFPMensual").innerHTML = "RD$" + (afp).toFixed(2);
+
+                document.getElementById("SFSMensual").innerHTML = "RD$" + (sfs).toFixed(2);
+
+                document.getElementById("ISRMensual").innerHTML = "RD$" + (isr * 0.16).toFixed(2);
+
+                var subTotal = Subtotal(afp, sfs, (isr));
+
+                console.log("total deducciones: " + subTotal.toFixed(2));
+
+                var total = Total(sueldo, afp, sfs, isr);
+
+                totalSinAhorro = Total(sueldo, afp, sfs, (isr), ahorro);
+
+                flete = (sueldo + ahorro);
+
+                document.getElementById("subTotalMensual").innerHTML = "RD$" + (total).toFixed(2);
+
+                document.getElementById("totalMensual").innerHTML = "RD$" + (totalSinAhorro).toFixed(2);
+
+            }
+
+            function AFP(flete) {
+                return flete * 12;
+            }
+
+            function SFS(sueldo) {
+                return sueldo * 0.12;
+            }
+
+
+            function ISR(sueldo) {
+
+                return sueldo * 16 / 100;
+            }
+
+            function Total(sueldo, afp, sfs, isr, ) {
+                return sueldo + afp + sfs + isr + ahorro;
+            }
+
+            function Subtotal(afp, sfs, isr) {
+                return afp + sfs + isr;
+            }
+        </script>
+
+        <title>Calculo Impuestos</title>
+    
+
+
+        <body>
+            <div class="panelCentral">
+                <div class="container titulo">
+                    <h1>
+                        Calculo impuestos paquetes
+                    </h1>
+                    <h5>AduService</h5>
+                </div>
+                <div class="container cajacalculo">
+                    <div class="FormSection">
+
+                        <label for="Sueldo" class="space">Valor del paquete: </label>
+                        <div class="input-group mb-2">
+                            <div class="input-group-prepend">
+                                <div class="input-group-text"><h1>USD$</h1></div>
+                            </div>
+                            <input type="text" class="textbox1" id="Sueldo" placeholder="0" required>
+                        </div>
+
+                        <label for="ahorro" class="space">Peso :</label>
+                        <div class="input-group mb-2">
+                            <div class="input-group-prepend">
+                                <div class="input-group-text"><h1>Libras</h1></div>
+                            </div>
+                            <input type="text" class="textbox1" id="Ahorro" placeholder="0" required>
+                        </div>
+
+                        <button class="btn btn-primary" onClick="calculo()"><h2>Calcular</h2></button>
+                    </div>
+
+                </div>
+              
+            
+                <div class="panelInferior">
+            <div class="card">
+                <div class="card-header">
+                    Resultados
+                </div>
+                <div class="card-body">
+                    <div class="center-content bottom-border">
+
+                        <hr>
+                        <table class="table table-borderless">
+                            <tbody>
+                                <tr>
+                                    <th id="AFPMensual"></th>
+                                    <th id="SFSMensual"></th>
+                                    <th id="ISRMensual"></th>
+                                </tr>
+                                <tr>
+                                    <td>Fletes</td>
+                                    <td>Arancel/Seguros</td>
+                                    <td>Iva </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            </div>
+        </body>
+

@@ -1,0 +1,40 @@
+﻿@model WebApplication1.Models.ADMINISTRADOR
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Eliminar Administrador</h2>
+
+<h3>Esta Seguro desea eliminar este administrador?</h3>
+<div>
+    <h4>ADMINISTRADOR</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.USERNAME)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.USERNAME)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CLAVE)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CLAVE)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Eliminar" class="btn btn-danger" /> |
+            @Html.ActionLink("Inicio", "Index")
+        </div>
+    }
+</div>

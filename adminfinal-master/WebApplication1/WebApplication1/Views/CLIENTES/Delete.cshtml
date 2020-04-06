@@ -1,0 +1,96 @@
+﻿@model WebApplication1.Models.CLIENTES
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Eliminar Cliente</h2>
+
+<h3>Esta Seguro que desea eliminar este Cliente?</h3>
+<div>
+    <h4>CLIENTES</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.NOMBRES)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NOMBRES)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.APELLIDOS)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.APELLIDOS)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CEDULA)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CEDULA)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.GENERO)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.GENERO)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TELEFONO)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TELEFONO)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CORREO)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CORREO)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.USUARIO)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.USUARIO)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CLAVE)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CLAVE)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SUCURSAL1.NOMBRE)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SUCURSAL1.NOMBRE)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Eliminar" class="btn btn-danger" /> |
+            @Html.ActionLink("Inicio", "Index")
+        </div>
+    }
+</div>

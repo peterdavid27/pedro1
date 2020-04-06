@@ -1,0 +1,58 @@
+﻿@model WebApplication1.Models.SUCURSAL
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Detalles</h2>
+
+<div>
+    
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.NOMBRE)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NOMBRE)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DIRECCION)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DIRECCION)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TELEFONO)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TELEFONO)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CORREO)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CORREO)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.HORARIO)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.HORARIO)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Editar", "Edit", new { id = Model.ID_SUCURSAL },new { @class = "btn btn-info" }) |
+    @Html.ActionLink("Info", "Index")
+</p>

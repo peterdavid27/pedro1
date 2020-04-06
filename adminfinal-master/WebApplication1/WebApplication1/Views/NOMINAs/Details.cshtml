@@ -1,0 +1,42 @@
+﻿@model WebApplication1.Models.NOMINA
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Detalles de Nominas</h2>
+
+<div>
+    <h4>NOMINA</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.AÑO)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AÑO)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MES)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MES)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MONTO_TOTAL)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MONTO_TOTAL)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Editar", "Edit", new { id = Model.ID }, new { @class = "btn btn-warning" }) |
+    @Html.ActionLink("Inicio", "Index")
+</p>

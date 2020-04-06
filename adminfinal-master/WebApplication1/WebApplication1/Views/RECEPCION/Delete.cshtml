@@ -1,0 +1,88 @@
+﻿@model WebApplication1.Models.RECEPCION
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Eliminar Recepcion</h2>
+
+<h3>Esta Seguro que desea eliminar esta Recepcion?</h3>
+<div>
+    
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.PRODUCTO)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PRODUCTO)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ESTADO)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ESTADO)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FECHA_REGISTRO)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FECHA_REGISTRO)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ORIGEN)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ORIGEN)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PESO)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PESO)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PRECIO)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PRECIO)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CLIENTES.NOMBRES)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CLIENTES.NOMBRES)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SUCURSAL.NOMBRE)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SUCURSAL.NOMBRE)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Eliminar" class="btn btn-danger" /> |
+            @Html.ActionLink("Inicio", "busquedafilter")
+        </div>
+    }
+</div>

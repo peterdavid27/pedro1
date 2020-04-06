@@ -1,0 +1,76 @@
+﻿@model IEnumerable<WebApplication1.Models.RECEPCION>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Paqueteria</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.PRODUCTO)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ESTADO)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FECHA_REGISTRO)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ORIGEN)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PESO)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PRECIO)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CLIENTES.NOMBRES)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SUCURSAL.NOMBRE);
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.PRODUCTO)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ESTADO)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FECHA_REGISTRO)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ORIGEN)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PESO)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PRECIO)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CLIENTES.NOMBRES)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SUCURSAL.NOMBRE)
+            </td>
+            <td>
+                @Html.ActionLink("Editar", "Edit", new { id = item.ID_PRODUCTO }, new { @class = "btn btn-warning" }) |
+                @Html.ActionLink("Detalles", "Details", new { id = item.ID_PRODUCTO }, new { @class = "btn btn-info" }) |
+                @Html.ActionLink("Eliminar", "Delete", new { id = item.ID_PRODUCTO }, new { @class = "btn btn-danger" })
+            </td>
+        </tr>
+    }
+
+</table>

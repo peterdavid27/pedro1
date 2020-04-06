@@ -1,0 +1,82 @@
+﻿@model WebApplication1.Models.RECEPCION
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Detalles de Recepcion</h2>
+
+<div>
+    
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.PRODUCTO)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PRODUCTO)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ESTADO)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ESTADO)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FECHA_REGISTRO)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FECHA_REGISTRO)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ORIGEN)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ORIGEN)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PESO)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PESO)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PRECIO)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PRECIO)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CLIENTES.NOMBRES)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CLIENTES.NOMBRES)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SUCURSAL.NOMBRE)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SUCURSAL.NOMBRE)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Editar", "Edit", new { id = Model.ID_PRODUCTO }, new { @class = "btn btn-warning" }) |
+    @Html.ActionLink("Inicio", "busquedafilter")
+</p>
